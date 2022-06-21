@@ -1,9 +1,15 @@
 package com.flagcamp.travelplanner.entity;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
-public class Place {
+@Entity
+public class Place implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    @Id
     private String placeId;
     private String title;
     private String image;
@@ -12,11 +18,11 @@ public class Place {
     private String description;
     private float rating;
     private int popularity;
-    private List<String> notes;
+    private String note;
 
-    public Place(String title) {
-        this.title = title;
-    }
+//    public Place(String title) {
+//        this.title = title;
+//    }
 
     public String getplaceId() {
         return placeId;
@@ -74,11 +80,11 @@ public class Place {
         this.popularity = popularity;
     }
 
-    public List<String> getNotes() {
-        return notes;
+    public String getNote() {
+        return note;
     }
 
-    public void setNotes(List<String> notes) {
-        this.notes = notes;
+    public void setNote(String note) {
+        this.note = note;
     }
 }

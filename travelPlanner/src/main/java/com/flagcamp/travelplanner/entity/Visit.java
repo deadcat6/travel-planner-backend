@@ -1,20 +1,27 @@
 package com.flagcamp.travelplanner.entity;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-public class Visit {
+@Entity
+public class Visit implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    @Id
     UUID uuid;
+
     UUID place_id;
     private LocalDateTime start;
     private LocalDateTime end;
-    private List<String> notes;
+    private String note;
 
-    public Visit(UUID place_id) {
-        uuid = UUID.randomUUID();
-        this.place_id = place_id;
-    }
+//    public Visit(UUID place_id) {
+//        uuid = UUID.randomUUID();
+//        this.place_id = place_id;
+//    }
 
     public LocalDateTime getStart() {
         return start;
@@ -32,11 +39,11 @@ public class Visit {
         this.end = end;
     }
 
-    public List<String> getNotes() {
-        return notes;
+    public String getNote() {
+        return note;
     }
 
-    public void setNotes(List<String> notes) {
-        this.notes = notes;
+    public void setNote(String note) {
+        this.note = note;
     }
 }

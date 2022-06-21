@@ -1,17 +1,25 @@
 package com.flagcamp.travelplanner.entity;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
-public class Tripday {
+@Entity
+public class Tripday implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    @Id
     UUID uuid;
     private String daytime;
+
+    @OneToMany
     private List<Place> places;
     private String weather;
 
-    public Tripday() {
-        uuid = UUID.randomUUID();
-    }
+//    public Tripday() {
+//        uuid = UUID.randomUUID();
+//    }
 
     public String getDaytime() {
         return daytime;

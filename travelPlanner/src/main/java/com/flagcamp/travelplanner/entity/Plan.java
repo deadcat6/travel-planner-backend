@@ -1,20 +1,33 @@
 package com.flagcamp.travelplanner.entity;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
-public class Plan {
+@Entity
+@Table(name = "plan")
+public class Plan implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    @Id
     UUID uuid;
+
     private String title;
+
+    @ManyToOne
     private User owner;
+
+    @OneToMany
     private List<Tripday> days;
-    private List<String> tags;
+
+    private String tag;
     private int likes;
 
-    public Plan(String title){
-        uuid = UUID.randomUUID();
-        this.title = title;
-    }
+//    public Plan(String title){
+//          uuid = UUID.randomUUID();
+//        this.title = title;
+//    }
 
     public String getTitle() {
         return title;
@@ -40,12 +53,12 @@ public class Plan {
         this.days = days;
     }
 
-    public List<String> getTags() {
-        return tags;
+    public String getTag() {
+        return tag;
     }
 
-    public void setTags(List<String> tags) {
-        this.tags = tags;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
     public int getLikes() {
